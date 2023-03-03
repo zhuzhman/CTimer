@@ -17,13 +17,11 @@
   typedef struct tm t_tm;
 
 	void	putChar(char c);
-	int   printNum(int n);
+	void  printNum(time_t n);
 	void	printTime(t_Time *t);
-	void	mydelay(clock_t ms);
-	void	sl(void);
 
   void sl(void);
-  void pr(int pre, struct tm* timeinfo);
-  time_t  HMsToSecs(time_t h, time_t m, time_t s);
+  time_t  HMsToSecs(t_Time* t);
   t_Time*  secsToHMs(time_t secs, t_Time* t);
+  void  pr(time_t n);
 #endif

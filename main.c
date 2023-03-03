@@ -1,23 +1,24 @@
 #include "timer.h"
 
 int main(void) {
-  time_t secs;
-  time_t rawtime;
-  time_t deadline;
+  time_t secs, rawtime, deadline, pre;
   t_tm* timeinfo;
-  time_t pre;
 
-  t_Time t = { 0, 0, 0, };
-
-  secs = HMsToSecs(0, 0, 3);
+  t_Time t = { 0, 0, 3 };
+  secs = HMsToSecs(&t);
   time(&rawtime);
   deadline = rawtime + secs;
   pre = secs - 1;
+  // write(1, "\n\n\n", 3);
+  write(1, "********************************\n", 34);
+  write(1, "********************************\n", 34);
+  write(1, "********************************\n", 34);
+  write(1, "********************************\n", 34);
+  write(1, "********************************\n", 34);
   while (rawtime < deadline) {
     sl();
     timeinfo = localtime(&rawtime);
     time(&rawtime);
-
     if (rawtime >= deadline - pre)
       printTime(secsToHMs(pre--, &t));
   }

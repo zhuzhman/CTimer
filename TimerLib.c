@@ -5,56 +5,42 @@ void	putChar(char c)
 	write(1, &c, 1);
 }
 
-int	printNum(int n)
+void	printNum(time_t n)
 {
 	if (n < 0)
-		return (1);
+		putChar('-');
 	if (n > 9)
 		printNum((n / 10));
 	putChar((n % 10) + '0');
-	return (0);
 }
 
 void	printTime(t_Time* t)
 {
-  system("clear");
+  // system("clear");
+  for (int i = 0; i < 5; i++)
+    write(1, "\x1b[A\33[2K\r", 9);
   write(1, "********************************\n", 34);
-  write(1, "          ", 11);
-	printNum(t->h);
-	write(1, "H :", 4);
-	printNum(t->m);
-	write(1, "M :", 4);
-	printNum(t->s);
+  write(1, "*                              *\n", 34);
+  write(1, "*         ", 11);
+	// printNum(t->h);
+	pr(t->h);
+	write(1, "H:", 3);
+	// printNum(t->m);
+	pr(t->m);
+	write(1, "M:", 3);
+	// printNum(t->s);
+	pr(t->s);
 	putChar('s');
+  write(1, "          *", 12);
 	putChar('\n');
+  write(1, "*                              *\n", 34);
   write(1, "********************************\n", 34);
 }
 
-void	mydelay(clock_t ms)
+void sl(void)
 {
-	clock_t timeDelay;
-	
-	timeDelay = ms + clock();
-	while (timeDelay > clock());
-}
-
-void sl(void) {
   if (nanosleep((const struct timespec[]){{0, 10000000L}}, NULL) < 0)
     printf("Nano sleep system call failed \n");
-  //   printf ("Nano sleep successfull\n\n");
-}
-
-void pr(int pre, struct tm* timeinfo) {
-  char buffer[64];
-  // for (int i = 0; i < 2; i++)
-        // printf("\x1b[A\33[2K\r");
-  // printf("Current local time and date: %s", asctime(timeinfo));
-  // printf("%.*s\n", 4, asctime(timeinfo) + 16);
-  // printf("Deadline is: %s\t\t\n", asctime(localtime(&deadline)));
-  // printf("%ld\t%ld\n", pre, timeinfo);
-  // printf("%ld\t%s", pre, asctime(timeinfo));
-  strftime (buffer, sizeof buffer, "%T\n", timeinfo);
-  printf("%ld\t%s", pre, buffer);
 }
 
 t_Time*  secsToHMs(time_t secs, t_Time* t)
@@ -65,7 +51,14 @@ t_Time*  secsToHMs(time_t secs, t_Time* t)
   return (t);
 }
 
-time_t  HMsToSecs(time_t h, time_t m, time_t s)
+time_t  HMsToSecs(t_Time* t)
 {
-  return (h * 60 * 60 + m * 60 + s);
+  return (t->h * 60 * 60 + t->m * 60 + t->s);
+}
+
+void  pr(time_t n)
+{
+  if(n < 10)
+    putChar('0');
+  printNum(n);
 }
