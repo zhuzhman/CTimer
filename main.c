@@ -1,10 +1,12 @@
 #include "timer.h"
 
-int main(void) {
+int main(void) 
+{
   time_t secs, rawtime, deadline, pre;
   t_tm* timeinfo;
 
-  t_Time t = { 0, 0, 3 };
+  t_Time	t1 = { 0, 0, 3 };
+  t_Time	t2 = { 0, 0, 3 };
   secs = HMsToSecs(&t);
   time(&rawtime);
   deadline = rawtime + secs;
