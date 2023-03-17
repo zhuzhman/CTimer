@@ -12,6 +12,7 @@
  	int h;
  	int m;
  	int s;
+	struct s_Time* next;
  } t_Time;
  
  typedef struct tm t_tm;
@@ -24,4 +25,9 @@
  time_t		HMsToSecs(t_Time* t);
  t_Time*	secsToHMs(time_t secs, t_Time* t);
  void		pr(time_t n);
+
+ void	ttimer(t_Time* t, time_t* rawtime);
+ void	asterisk(void);
+ void	listo(t_Time* t,time_t* rawtime);
+ 
 #endif
