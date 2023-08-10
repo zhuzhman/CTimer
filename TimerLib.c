@@ -14,7 +14,7 @@ void	printNum(time_t n)
 	putChar((n % 10) + '0');
 }
 
-void	printTime(t_Time* t)
+void	printTime(myTimeType* t)
 {
   // system("clear");
   for (int i = 0; i < 5; i++)
@@ -43,7 +43,7 @@ void sl(void)
     printf("Nano sleep system call failed \n");
 }
 
-t_Time*  secsToHMs(time_t secs, t_Time* t)
+myTimeType*  secsToHMs(time_t secs, myTimeType* t)
 {
   t->h = (secs / 3600);
 	t->m = (secs - (3600 * t->h)) / 60;
@@ -51,7 +51,7 @@ t_Time*  secsToHMs(time_t secs, t_Time* t)
   return (t);
 }
 
-time_t  HMsToSecs(t_Time* t)
+time_t  HMsToSecs(myTimeType* t)
 {
   return (t->h * 60 * 60 + t->m * 60 + t->s);
 }

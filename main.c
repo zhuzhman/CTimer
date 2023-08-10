@@ -4,7 +4,7 @@ int main(void) {
   time_t secs, rawtime, deadline, pre;
   t_tm* timeinfo;
 
-  t_Time t = { 0, 0, 3 };
+  myTimeType t = { 4, 1200, 3800 };
   secs = HMsToSecs(&t);
   time(&rawtime);
   deadline = rawtime + secs;

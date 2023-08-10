@@ -12,16 +12,16 @@
 		int h;
 		int m;
 		int s;
-	} t_Time;
+	} myTimeType;
 
   typedef struct tm t_tm;
 
 	void	putChar(char c);
 	void  printNum(time_t n);
-	void	printTime(t_Time *t);
+	void	printTime(myTimeType *t);
 
   void sl(void);
-  time_t  HMsToSecs(t_Time* t);
-  t_Time*  secsToHMs(time_t secs, t_Time* t);
+  time_t  HMsToSecs(myTimeType* t);
+  myTimeType*  secsToHMs(time_t secs, myTimeType* t);
   void  pr(time_t n);
 #endif
