@@ -1,0 +1,11 @@
+/other
+/other/*
+.*
+!.gitignore
+main
+main-debug
+.ccls*
+.ccls*/*
+.replit
+*.nix
+main.d*
